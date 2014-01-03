@@ -1,6 +1,6 @@
 pt-PT:
  active_admin:
-    globalize3:
+    globalize:
       translations: "Traduções"
       language:
         it: "Italiano"

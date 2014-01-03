@@ -1,10 +1,10 @@
-# ActiveAdmin::Globalize3
+# ActiveAdmin::Globalize
 Makes it easy to translate your resource fields.
 
 ## Installation
 
 ```ruby
-gem "activeadmin-globalize3"
+gem "activeadmin-globalize"
 ```
 ## Your model
 
@@ -36,7 +36,7 @@ If `switch_locale` is set, each tab will be rendered switching locale.
 
 ## Friendly ID
 
-If you want to use Friendly ID together with Globalize3, please take a look
+If you want to use Friendly ID together with Globalize, please take a look
 at the `activeadmin-seo` gem.
 
 ## Hints

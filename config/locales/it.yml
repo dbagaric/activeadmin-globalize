@@ -1,6 +1,6 @@
 it:
   active_admin:
-    globalize3:
+    globalize:
       translations: "Traduzioni"
       language:
         it: "Italiano"

@@ -1,5 +1,5 @@
 module ActiveAdmin
-  module Globalize3
+  module Globalize
     VERSION = "0.0.2"
   end
 end
