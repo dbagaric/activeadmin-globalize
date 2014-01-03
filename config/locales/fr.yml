@@ -1,0 +1,12 @@
+fr:
+  active_admin:
+    globalize:
+      translations: "Traductions"
+      language:
+        it: "Italien"
+        en: "Anglais"
+        fr: "Français"
+        es: "Espagnol"
+        de: "Allemand"
+        pt-BR: "Portuguais"
+        pt-PT: "Portuguais (Portugal)"
