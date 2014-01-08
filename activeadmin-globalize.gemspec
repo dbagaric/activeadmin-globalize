@@ -17,5 +17,4 @@ Gem::Specification.new do |s|
 
   s.add_dependency "activeadmin"
   s.add_dependency "globalize"
-  s.add_dependency "strong_parameters"
 end
