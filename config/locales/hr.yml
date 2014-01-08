@@ -1,0 +1,13 @@
+en:
+  active_admin:
+    globalize:
+      translations: "Prijevodi"
+      language:
+        hr: "Hrvatski"
+        it: "Talijanski"
+        en: "Engleski"
+        fr: "Francuski"
+        es: "Španjolski"
+        de: "Njemački"
+        pt-BR: "Portugalski"
+        pt-PT: "Portugalski (Portugal)"
