@@ -1,3 +1,4 @@
+require 'active_admin/globalize/filter_empty_translations'
 module ActiveAdmin
   module Globalize
     class Engine < ::Rails::Engine
@@ -13,6 +14,14 @@ module ActiveAdmin
         ActiveAdmin.application.register_javascript "active_admin/active_admin_globalize.js"
       end
 
+      # Register a before_filter in ActionController that will filter out
+      # empty translations submitted by activeadmin-globalize3.
+      # See ActiveAdmin::Globalize3::FilterEmptyTranslations#filter_empty_translations
+      initializer "activeadmin-globalize.load_helpers" do |app|
+        ActionController::Base.send :include, ActiveAdmin::Globalize::FilterEmptyTranslations
+        ActionController::Base.send :before_filter, :filter_empty_translations, only: [:create, :update]
+      end
+      
     end
   end
 end
