@@ -36,7 +36,8 @@ module ActiveAdmin
         translation_params = params
         
         translation_params[model][:translations_attributes].each do |t|
-          t.delete :seo_meta_attributes
+          t.last.delete :seo_meta_attributes
+          t.last.delete :_destroy if t.last[:_destroy] == "0"
           if !(t.last.map { |_, v| v.empty? ? true : false }[2..-1]).include?(false)
             if t.last[:id].empty?
               params[model][:translations_attributes].delete(t.first)
