@@ -5,9 +5,11 @@ module ActiveAdmin
     module IndexTableFor
       def translation_status
         column I18n.t("active_admin.globalize.translations") do |obj|
+          locales = []
           obj.translations.pluck(:locale).each do |t|
-            "<span class=\"status_tag\">#{t.to_s}</span>"
-          end.join(" ").html_safe
+            locales << "<span class=\"status_tag\">#{t.to_s}</span>"
+          end
+          locales.join(" ").html_safe
         end
       end
     end
