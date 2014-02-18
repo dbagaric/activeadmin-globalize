@@ -32,13 +32,12 @@ module ActiveAdmin
       # This filter removes all empty and unsaved translations from params
       # and marks empty and saved translation for deletion.
       def filter_empty_translations
-        model = controller_name.singularize.to_sym
-        translation_params = params
-        
-        translation_params[model][:translations_attributes].each do |t|
-          t.last.delete :seo_meta_attributes
-          t.last.delete :_destroy if t.last[:_destroy] == "0"
-          if !(t.last.map { |_, v| v.empty? ? true : false }[2..-1]).include?(false)
+        model = controller_name.singularize.to_sym        
+        params[model][:translations_attributes].each do |t|
+          num = - 1
+          num = num - 1 if t.last[:_destroy].present?
+          num = num - 1 if t.last[:seo_meta_attributes].present? 
+          if !(t.last.map { |_, v| v.empty? ? true : false }[2..num]).include?(false)
             if t.last[:id].empty?
               params[model][:translations_attributes].delete(t.first)
             else
