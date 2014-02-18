@@ -6,7 +6,7 @@ module ActiveAdmin
       def translation_status
         column I18n.t("active_admin.globalize.translations") do |obj|
           obj.translations.pluck(:locale).each do |t|
-            '<span class="status_tag">%s</span>' % t
+            '<span class="status_tag">%s</span>' % t.to_s
           end.join(" ").html_safe
         end
       end
