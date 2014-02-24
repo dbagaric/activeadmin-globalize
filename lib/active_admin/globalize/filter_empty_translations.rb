@@ -33,16 +33,18 @@ module ActiveAdmin
       # and marks empty and saved translation for deletion.
       def filter_empty_translations
         model = controller_name.singularize.to_sym
-        if params.has_key?(model)    
-          params[model][:translations_attributes].each do |t|
-            num = - 1
-            num = num - 1 if t.last[:_destroy].present?
-            num = num - 1 if t.last[:seo_meta_attributes].present? 
-            if !(t.last.map { |_, v| v.empty? ? true : false }[2..num]).include?(false)
-              if t.last[:id].empty?
-                params[model][:translations_attributes].delete(t.first)
-              else
-                params[model][:translations_attributes][t.first]['_destroy'] = '1'
+        if params.has_key?(model)
+          if params.has_key?(:translations_attributes)
+            params[model][:translations_attributes].each do |t|
+              num = - 1
+              num = num - 1 if t.last[:_destroy].present?
+              num = num - 1 if t.last[:seo_meta_attributes].present? 
+              if !(t.last.map { |_, v| v.empty? ? true : false }[2..num]).include?(false)
+                if t.last[:id].empty?
+                  params[model][:translations_attributes].delete(t.first)
+                else
+                  params[model][:translations_attributes][t.first]['_destroy'] = '1'
+                end
               end
             end
           end
