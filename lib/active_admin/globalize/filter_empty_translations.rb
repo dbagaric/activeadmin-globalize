@@ -31,16 +31,18 @@ module ActiveAdmin
       #
       # This filter removes all empty and unsaved translations from params
       # and marks empty and saved translation for deletion.
-      if params.has_key?(model)    
-        params[model][:translations_attributes].each do |t|
-          num = - 1
-          num = num - 1 if t.last[:_destroy].present?
-          num = num - 1 if t.last[:seo_meta_attributes].present? 
-          if !(t.last.map { |_, v| v.empty? ? true : false }[2..num]).include?(false)
-            if t.last[:id].empty?
-              params[model][:translations_attributes].delete(t.first)
-            else
-              params[model][:translations_attributes][t.first]['_destroy'] = '1'
+      def filter_empty_translations
+        if params.has_key?(model)    
+          params[model][:translations_attributes].each do |t|
+            num = - 1
+            num = num - 1 if t.last[:_destroy].present?
+            num = num - 1 if t.last[:seo_meta_attributes].present? 
+            if !(t.last.map { |_, v| v.empty? ? true : false }[2..num]).include?(false)
+              if t.last[:id].empty?
+                params[model][:translations_attributes].delete(t.first)
+              else
+                params[model][:translations_attributes][t.first]['_destroy'] = '1'
+              end
             end
           end
         end
